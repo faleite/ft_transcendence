@@ -24,6 +24,8 @@ delving into the code – it’s crucial.`
   - *Dinis Marques [`dimarque`](https://profile.intra.42.fr/users/dimarque)*
   - *Paulo Bastos [`paulorod`](https://profile.intra.42.fr/users/paulorod)*
 
+[project](https://github.com/pauloBastos96/Ft_transcendence)
+
 ## Index
 * **[Workflow](#workflow)**
 * **[Briefing](#briefing)** 
