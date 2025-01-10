@@ -31,3 +31,4 @@ if __name__ == '__main__':
 	count_char('abc')
 	print()
 	count_char('abcabc')
+	

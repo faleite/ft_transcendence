@@ -1,6 +1,6 @@
 ## Python
 
-> [To be continued...](https://plataforma.dev.pro.br/26401-01-python-birds/695625-contagem-de-caracteres-com-dicionario) \
+> [To be continued...](https://plataforma.dev.pro.br/26401-01-python-birds/695638-atributo-de-classe) \
 > try use module in other file...
 
 ### Basics
@@ -191,5 +191,7 @@
 - ```python
   import math
   math.sqrt(16) # 4.0
-  ```  
+  ```
+
+  ### [Classes](../src/oo/pessoa.py)
   
