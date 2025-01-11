@@ -194,4 +194,15 @@
   ```
 
   ### [Classes](../src/oo/pessoa.py)
+
+  ### Doctest
+  - `doctest` Test the code in the docstrings
+  - ```python
+	""" This is a docstring for a function that returns 'Hello World'
+	>>> hello_world()
+	'Hello World'
+	"""
+  - run `python -m doctest file.py` # Run the doctests in a file
+  - run `python -m doctest -f file.py` # Run the doctests and show just the first failed test
+  - run `python -m doctest -help`
   
