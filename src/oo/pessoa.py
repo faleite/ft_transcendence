@@ -1,12 +1,27 @@
 class Pessoa:
 	# pass
+	
+	# Quando uma variavel tiver o mesmo valor (default) para todos os objetos crie um atribulto de classe
+	olhos = 2 # atribukto de classe
+
+	# atribulto de estancia
 	def __init__(self, *filhos, nome=None, idade=35): # Para criacao de atributo de Dados (variaveis)
 		self.nome = nome
 		self.idade = idade
 		self.filhos = list(filhos)
 		
-	def cumprimentar(self): # atribulto de metodo
-		return 'Ola'
+	def cumprimentar(self): # atribulto de metodo da estancia
+		return f'Ola {id(self)}'
+	
+	# Um método estático é apenas uma função atrelada a classe, ela não depende do objeto em si
+	@staticmethod
+	def metodo_estatico(): # não precisa receber nenhum atribulto
+		return 42
+	
+	# Metodos da própria classe
+	@classmethod
+	def nome_e_atribultos_classe(cls):
+		return f'{cls} - olhos {cls.olhos}'
 
 if __name__ == '__main__':
 	bento = Pessoa(nome='Bento')
@@ -36,3 +51,23 @@ if __name__ == '__main__':
 	# Tambem e possivel remover um tributo de um objeto:
 	del fabricio.filhos
 	print(fabricio.__dict__)
+
+	# Atribulto de classe
+	print(Pessoa.olhos) # atribulto de estancia
+	print(fabricio.olhos) 
+	print(bento.olhos) 
+	# print(Pessoa.nome) # nao é uma atribulto de classe
+	print(id(Pessoa.olhos), id(fabricio.olhos), id(bento.olhos))
+
+	bento.olhos = 3
+	print(bento.olhos)
+	print(id(Pessoa.olhos), id(fabricio.olhos), id(bento.olhos))
+	print(bento.__dict__)
+
+	# O método estatico pode ser chamado pela própria classe ou pelo objeto
+	print(Pessoa.metodo_estatico(), bento.metodo_estatico())
+
+	# Método da classe
+	print(Pessoa.nome_e_atribultos_classe(), bento.nome_e_atribultos_classe())
+
+	
