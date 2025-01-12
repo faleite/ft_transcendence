@@ -23,9 +23,20 @@ class Pessoa:
 	def nome_e_atribultos_classe(cls):
 		return f'{cls} - olhos {cls.olhos}'
 
+
+# Heranca (Homem e um tipo de pessoa, logo a classe 'Homem()' herda da classe pai 'Pessoa()')
+class Homem(Pessoa): # herda todos os metodos e atribultos da classe pai 'Pessoa()'
+	pass
+
+
+"""================================TESTES============================================"""
+
 if __name__ == '__main__':
-	bento = Pessoa(nome='Bento')
-	fabricio = Pessoa(bento, nome='Fabricio')
+	# bento = Pessoa(nome='Bento')
+	bento = Homem(nome='Bento')
+	# fabricio = Pessoa(bento, nome='Fabricio')
+	fabricio = Homem(bento, nome='Fabricio')
+
 	print(Pessoa.cumprimentar(fabricio))
 	print(id(fabricio))
 	print(fabricio.cumprimentar())
@@ -70,4 +81,10 @@ if __name__ == '__main__':
 	# Método da classe
 	print(Pessoa.nome_e_atribultos_classe(), bento.nome_e_atribultos_classe())
 
-	
+	# Sobre Heranca
+	pessoa = Pessoa('Anonimo')
+	# Funcao que verifica a instancia de um objeto
+	print(isinstance(pessoa, Pessoa)) # True
+	print(isinstance(pessoa, Homem)) # False
+	print(isinstance(bento, Pessoa)) # True
+	print(isinstance(bento, Homem)) # True	

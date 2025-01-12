@@ -1,7 +1,8 @@
 ## Python
 
-> [To be continued...](https://plataforma.dev.pro.br/26401-01-python-birds/695638-atributo-de-classe) \
-> try use module in other file...
+> [To be continued...]() \
+> try use module in other file... \
+> [Python Birds stoped in](https://plataforma.dev.pro.br/26401-01-python-birds/695651-tipos-de-teste)
 
 ### Basics
 - `dir()` List all the attributes of an object
