@@ -1,0 +1,75 @@
+name: transcendence
+
+services:
+  backend:
+    depends_on:
+      - postgres
+    container_name: backend
+    build: requirements/backend
+    volumes:
+      - ./requirements/backend/conf:/transcendence/backend
+      - static-volume:/transcendence/backend/staticfiles
+      - ../avatars:/transcendence/backend/mediafiles
+    restart: on-failure
+    env_file:
+      - .env
+    environment:
+      EMAIL_PASSWORD_FILE: /run/secrets/email_password
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+      DJANGO_SUPERUSER_FILE: /run/secrets/django_superuser_password
+    networks:
+      - transcendence
+    # ports:
+    #   - "8080:8000"
+    secrets:
+      - django_superuser_password
+      - email_password
+      - postgres_password
+    
+  postgres:
+    container_name: postgres
+    image: postgres
+    shm_size: 128mb
+    restart: on-failure
+    env_file:
+      - .env
+    # TODO: POSTGRES_PASSWORD_FILE as secret
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+    networks:
+      - transcendence
+    secrets:
+      - postgres_password
+
+  nginx:
+    depends_on:
+      - backend
+    container_name: nginx
+    build: requirements/nginx
+    ports:
+      # - "8081:443"
+      - "443:443"
+      - "80:80"
+      # - "8080:8080"
+    volumes:
+      - ../../:/usr/share/nginx/frontend
+      - static-volume:/etc/nginx/html/static/
+      - ../avatars:/etc/nginx/html/media
+    restart: on-failure
+    networks:
+      - transcendence
+
+volumes:
+  static-volume:
+
+networks:
+  transcendence:
+    driver: bridge
+
+secrets:
+  django_superuser_password:
+    file: ../secrets/django_superuser_password.txt
+  postgres_password:
+    file: ../secrets/postgres_password.txt
+  email_password:
+    file: ../secrets/email_host_password.txt
