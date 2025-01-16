@@ -34,4 +34,7 @@ reset:
 shellb:
 	docker exec -it backend /bin/bash
 
+shelldb:
+	docker exec -it postgres /bin/bash
+
 .PHONY: all start stop down restart clean fclean re clean-docker reset
